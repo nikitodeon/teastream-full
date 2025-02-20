@@ -1,0 +1,436 @@
+mutation ResetPassword($data:ResetPasswordInput!){
+  
+  resetPassword(data:$data)
+}
+{
+  "data":{
+  "email": "wotacc999n@gmail.com"
+}
+}
+
+query FindMyFollowings {
+  findMyFollowings{
+    following {
+      username
+    }
+  }
+}
+query FindChannelByUsername($username: String!) {
+  findChannelByUsername(username: $username) {
+    id
+    username
+    displayName
+    stream {
+      title
+      thumbnailUrl
+    }
+  }
+}
+{
+  "username": "wotacc999n"
+}
+mutation DeactivateAccount($data: DeactivateAccountInput!) {
+  deactivateAccount(data: $data) {
+    message
+    user {
+      email
+    }
+  }
+}
+{
+  "data": {
+    "email": "wotacc999n@gmail.com",
+    "password": "12345678"
+  }
+  
+}
+mutation LoginUser($data: LoginInput!) {
+  loginUser(data: $data){
+   user
+    {
+      email
+     
+    }
+    message
+  }
+}
+{
+  "data":{
+   "login":"wotacc999n@gmail.com",
+    "password":"12345678"
+    
+}
+}
+
+
+mutation ChangeNotificationSettings($data: ChangeNotificationsSettingsInput!){
+  changeNotificationsSettings(data: $data){
+    notificationSettings{
+      siteNotifications
+      telegramNotifications
+    }
+    telegramAuthToken
+  }
+}
+
+{
+  "data": {
+    "siteNotifications" : true,
+    "telegramNotifications" :true
+  }
+}
+mutation CreateIngress($ingressType: Float!){
+  createIngress(ingressType: $ingressType)
+  
+}
+{
+  "ingressType": 0
+}
+
+query FindNotificationsUnreadCount {
+  findNotificationsUnreadCount
+}
+
+query FindNotifications {
+  findNotificationsByUser{
+   message
+    isRead
+    type
+  }
+}
+mutation ChangePassword($data: ChangePasswordInput!){
+  changePassword(data: $data)-
+}
+
+{
+  "data": {
+    "oldPassword":  "123456789",
+    "newPassword": "12345678"
+  }
+}
+query FindFollowersCountByChannel($channelId: String!) {
+  findFollowersCountByChannel(channelId: $channelId)
+}
+{
+  "channelId": "774ef697-dda3-405d-951a-8414f62b873e"
+}
+query FindReccomendedChannels {
+  findRecommendedChannels{
+    username
+    displayName
+    stream {
+      title
+      thumbnailUrl
+      category {
+        title
+        description
+      }
+    }
+  }
+}
+
+mutation UnfollowChannel($channelId: String!) {
+  unfollowChannel(channelId: $channelId)
+}
+{
+  "channelId": "5d54ddfc-7578-478f-b4f0-e6fdf7ce71c3"
+}
+
+subscription ChatMessageAdded($streamId: String!) {
+   chatMessageAdded(streamId: $streamId){
+    text
+  }
+}
+
+{
+  "streamId": "b3f86e86-0e66-4cc8-b351-8df4ee6c900f"
+}
+
+query FindMyFollowers {
+  findMyFollowers {
+    follower{
+      username
+    }
+    
+  }
+}
+
+mutation FollowChannel($channelId: String!) {
+  followChannel(channelId: $channelId)
+}
+
+{
+  "channelId": "5d54ddfc-7578-478f-b4f0-e6fdf7ce71c3"
+}
+
+mutation SendChatMessage($data: SendMessageInput!){
+  sendChatMessage(data: $data){
+    text
+    stream {
+      title
+    }
+  }
+}
+
+{
+  "data": {
+    "text":  "Лукашенко чмоня",
+    "streamId" : "b3f86e86-0e66-4cc8-b351-8df4ee6c900f"
+  }
+}
+
+mutation CreateUser($data: CreateUserInput!){
+  createUser(data: $data)
+}
+{
+  "data":{
+    "username":"john",
+    "email":"john@gmail.com",
+    "password":"12345678"
+  
+}
+}
+mutation LogoutUser {
+  logoutUser
+}
+query FindCurrentSession{
+  findCurrentSession{
+     id
+    createdAt
+    metadata {
+      location{
+      country
+        city
+        latidute
+        longitude
+      }
+      device {
+        browser
+        os
+      }
+      ip
+    }
+  }
+  }
+mutation RemoveSession($id: String!)
+{
+  removeSession(id:$id)
+}
+{
+  "id":"Rolfu46gmC37_A5MOy2BwQdOo4TZDIcu"
+}
+mutation VerifyAccount($data:VerificationInput!){
+  verifyAccount(data:$data){
+    email
+    username
+  }
+}
+{
+  "data": {
+    "token": "afcfab4c-82fc-48b0-a1ad-6054ea5dfcf4"
+  }
+}
+mutation NewPassword($data:NewPasswordInput!){
+  
+  newPassword(data:$data)
+}
+{
+  "data":{
+    "password":"12345678",
+    "passwordRepeat":"12345678",
+    "token":"87d53c8c-3ba7-4672-9628-14ddbd4b6379"
+  }
+}
+query GenerateTotpSecret {
+  generateTotpSecret {
+    qrcodeUrl
+    secret
+  }
+}
+mutation EnableTotp($data: EnableTotpInput!) {
+  enableTotp(data: $data)
+}
+{
+  "data": {
+    "secret": "NR3PVKU5DPEOHG3RLOXYC52G",
+   "pin": "169442"
+  }
+}
+mutation DisableTotp {
+  disableTotp
+}
+mutation ChangeEmail($data: ChangeEmailInput!){
+  changeEmail(data: $data)
+}
+
+mutation ChangeProfileInfo($data: ChangeProfileInfoInput!){
+  changeProfileInfo(data: $data)
+  
+}
+{
+  "data": {
+    "username": "ragerage333",
+    "displayName": "Ragerage",
+    "bio":  " Иди нахуй чмо"
+  }
+}
+mutation RemoveSocialLink($id: String!) {
+  removeSocialLink(id: $id)
+}
+{
+  "id": "906ed024-676e-4f16-932b-33ebd80c6f5b"
+}
+query FindProfile {
+  findProfile{
+    username
+    displayName
+    email
+    bio
+    avatar
+    isTotpEnabled
+    totpSecret
+    socialLinks {
+      url
+      title
+    }
+  }
+}
+
+query FindRandomStreams{
+  findRandomStreams {
+    title
+    thumbnailUrl
+    user {
+      username
+      avatar
+    }
+  }
+}
+
+mutation ChangeStreamInfo($data: ChangeStreamInfoInput!) {
+  changeStreamInfo(data: $data)
+}
+
+{
+  "data": {
+    "title" : "Лукашенко Чмоня",
+    "categoryId": "1"
+  }
+}
+
+mutation GenerateStreamToken($data: GenerateStreamTokenInput!){
+  generateStreamToken(data: $data) {
+    token 
+  }
+}
+{"data": {
+  "userId": "0f575500-b6b2-45fc-88af-13464d693bf9",
+  "channelId": "aa1e5cfc-639b-4094-90cd-8f5714a3a769"
+}}
+
+# Write your query or mutation here
+mutation LoginUser($data: LoginInput!) {
+  loginUser(data: $data){
+   user
+    {
+      email
+     
+    }
+    message
+  }
+}
+{
+  "data":{
+   "login":"wotacc999n@gmail.com",
+    "password":"12345678"
+    
+}
+}
+mutation FollowChannel($channelId: String!) {
+  followChannel(channelId: $channelId)
+}
+{
+  "channelId": "774ef697-dda3-405d-951a-8414f62b873e"
+}
+mutation ChangeNotificationSettings($data: ChangeNotificationsSettingsInput!){
+  changeNotificationsSettings(data: $data){
+    notificationSettings{
+      siteNotifications
+      telegramNotifications
+    }
+    telegramAuthToken
+  }
+}
+{
+  "data": {
+    "siteNotifications" : true,
+    "telegramNotifications" :false
+  }
+}
+query FindNotificationsUnreadCount {
+  findNotificationsUnreadCount
+}
+query FindNotifications {
+  findNotificationsByUser{
+   message
+    isRead
+    type
+  }
+}
+query FindMySponsorshipPlans {
+  findMySponsorshipPlans {
+    title
+    description
+    price
+  }
+}
+mutation CreateSponsorshipPlan($data: CreatePlanInput!) {
+  createSponsorshipPlan(data: $data)
+}
+{
+  "data": {
+    "title": " Planishe",
+    "price": 1000
+  }
+}
+mutation MakePayment($planId: String!) {
+  makePayment(planId: $planId) {
+    url
+  }
+}
+{
+  "planId":"a450e882-51c1-4987-9600-305a107efa0d"
+}
+query FindMyTransactions {
+  findMyTransactions {
+    amount
+    currency
+    status
+    stripeSubscriptionId
+  }
+}
+query FindMySponsors{
+  findMySponsors {
+    channel {
+      username
+    }
+    expiresAt
+    user{
+      displayName
+    }
+  }
+}
+
+query FindSponsorsByChannel($channelId:String!) {
+  findSponsorsByChannel(channelId: $channelId) {
+   user { username}
+  
+  expiresAt
+  user {
+    displayName
+  }
+  }}
+
+{
+  "channelId": "774ef697-dda3-405d-951a-8414f62b873e"
+}
